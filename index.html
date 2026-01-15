@@ -582,6 +582,34 @@
   }
 }
 
+    .kv .v{
+  text-align: left;
+  white-space: normal;
+  word-break: keep-all;      /* ✅ 한글 단어 단위 줄바꿈 */
+  overflow-wrap: anywhere;   /* ✅ 예약번호/긴 토큰도 화면 밖으로 안 튐 */
+  line-height: 1.45;
+}
+
+    
+    @media (max-width: 600px){
+  /* 디테일 영역 자체 좌우 패딩 줄이기 */
+  details{ padding: 8px 10px 10px; }
+  .detailBody{ gap: 8px; }
+
+  /* kv 카드: 라운드/패딩/갭/컬럼폭 더 타이트 */
+  .kv{
+    grid-template-columns: 64px 1fr;  /* ✅ 라벨폭 더 줄임 */
+    gap: 6px;                         /* ✅ 가운데 간격 줄임 */
+    padding: 8px 10px;                /* ✅ 내부 여백 줄임 */
+    border-radius: 12px;              /* ✅ 라운드 살짝 줄임 */
+  }
+  .kv .k{ font-size: 11px; }
+  .kv .v{ font-size: 13px; }
+
+  /* 주소/영업 같은 값이 가운데처럼 보이지 않게: 왼쪽 정렬 강제 */
+  .kv .v{ text-align:left; }
+}
+
 
   </style>
 </head>
@@ -593,12 +621,11 @@
         <div class="badge">🤍</div>
         <div>
           <h1>Jeju Romantic Trip</h1>
-          <div class="sub">기억 덮어쓰기 프로젝트</div>
         </div>
       </div>
 
       <div class="actions">
-        <span class="pill">📅 <b>2026.01.17</b> → <b>2026.01.19</b></span>
+        <span class="pill">📅 <b>2026.01.17</b> → <b>01.19</b></span>
         <button class="btn" id="copyLink">🔗 링크 복사</button>
         <button class="btn primary" id="resetDone">♻️ 체크 리셋</button>
       </div>
@@ -627,7 +654,7 @@
           </div>
           <div class="stat">
             <div class="k">🚗 Mobility</div>
-            <div class="v" id="statMobility">특별한 렌터카 <br> 캐스퍼 </div>
+            <div class="v" id="statMobility">캐스퍼 </div>
           </div>
           <div class="stat">
             <div class="k">🏨 Stay</div>
@@ -717,11 +744,10 @@
               details: [
                 ["업체명", "특별한 렌트카"],
                 ["예약번호", "<code>RS1984048</code>"],
-                ["예약자", "박석진"],
                 ["대여기간", "2026.01.17(토) 20:00 → 2026.01.19(월) 15:00"],
                 ["차종", "캐스퍼 F/L, 휘발유"],
                 ["셔틀탑승", "렌트카하우스 5구역 10번"],
-                ["메모", "20:00~21:00 렌트카 회사 마감시간 이후 출고 시 추가금 10,000 (대신 셔틀 이용 가능)"],
+                ["메모", "렌트카 마감시간 이후 출고 시 추가금 10,000 (대신 셔틀 이용 가능)"],
               ],
             },
             {
@@ -730,7 +756,7 @@
               type: "숙소",
               accent: "green",
               title: "다인오세아노 호텔 체크인",
-              note: "렌트카 타고 출발 → 호텔로 이동",
+              note: "렌트카 타고 호텔로 이동",
               address: "제주 제주시 애월해안로 394",
               details: [
                 ["체크인", "21:30 전후"],
@@ -746,8 +772,8 @@
               note: "택시로 이동",
               address: "제주 제주시 애월읍 가문동길 41-2 2층",
               details: [
-                ["메뉴", "딱새우사시미, 성게관자구이, 고등어회"],
                 ["영업", "18:00~24:00"],
+                ["메뉴", "딱새우사시미, 성게관자구이, 고등어회"],
               ],
             },
           ],
@@ -777,10 +803,10 @@
               type: "체험",
               accent: "green",
               title: "반지공방 아뜰리에호수",
-              note: "10:30 예약",
+              note: "의미있는 커플링 만들기",
               address: "제주 제주시 협재1길 55-9",
               details: [
-                ["예약", "10:30, 네이버예약"],
+                ["예약", "10:30, 네이버예약 완료"],
               ],
             },
             {
@@ -789,7 +815,7 @@
               type: "카페",
               accent: "orange",
               title: "브레드다이브",
-              note: "08:30~18:00 · 석진이의 빵투어",
+              note: "08:30~18:00 · 석진이의 빵공부부",
               address: "제주 제주시 한림읍 금능5길 21",
               details: [
                 ["영업", "08:30~18:00"],
@@ -879,7 +905,7 @@
               title: "체크아웃",
               note: "짐 정리하고 여유 있게 출발",
               details: [
-                ["메모", "권소연 깨우기"],
+                ["미션", "권소연 깨우기"],
               ],
             },
             {
@@ -1139,12 +1165,24 @@
               </div>
             </div>
 
+            
+            const mapBtnHTML = it.address && it.address.trim()
+              ? `<a class="mini" data-act="map" href="${mapUrl}" target="_blank" rel="noopener" title="네이버지도">
+                    <span class="ico">📍</span><span class="lbl">지도</span>
+                </a>`
+              : ``;
+
+const doneLabel = isDone ? "체크됨" : "체크";
+const doneIcon  = isDone ? "✅" : "☑️";
+
+
             <div class="rightBtns">
-               ${mapBtnHtml}
-               <button class="mini ${isDone ? "done":""}" data-act="done" title="완료 체크">
-                    ${isDone ? "✅ 완료":"☑️ 체크"}
-               </button>
+              ${mapBtnHTML}
+              <button class="mini ${isDone ? "done":""}" data-act="done" title="완료 체크">
+                <span class="ico">${doneIcon}</span><span class="lbl">${doneLabel}</span>
+                </button>
             </div>
+
 
           </div>
 
@@ -1267,5 +1305,6 @@
   </script>
 </body>
 </html>
+
 
 
