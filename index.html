@@ -1,4 +1,4 @@
-<!doctype html> 
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
@@ -16,7 +16,7 @@
       --shadow2: 0 8px 20px rgba(2,6,23,.06);
 
       --orange:#ff7a18;
-      --orange2:#ff4d00;  /* 더 딥한 오렌지 */
+      --orange2:#ff4d00;
       --green:#16a34a;
       --orangeGrad: linear-gradient(135deg, rgba(255,122,24,.98), rgba(255,77,0,.96));
 
@@ -40,6 +40,7 @@
     }
     a{color:inherit}
     .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 80px}
+
     .topbar{
       display:flex;gap:12px;align-items:center;justify-content:space-between;
       position:sticky;top:0;z-index:50;
@@ -51,7 +52,6 @@
     .brand{display:flex;align-items:center;gap:10px}
     .badge{
       width:44px;height:44px;border-radius:14px;
-      /* ✅ 오렌지 그라데이션으로 변경 */
       background: var(--orangeGrad);
       box-shadow: 0 12px 22px rgba(255,122,24,.22);
       display:grid;place-items:center;
@@ -59,7 +59,7 @@
       letter-spacing:.5px;
     }
     .brand h1{font-size:16px;margin:0;line-height:1.2}
-    .brand .sub{font-size:12px;color:var(--muted);margin-top:2px}
+
     .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
     .btn{
       border:1px solid var(--line);
@@ -103,7 +103,6 @@
       position:relative;
       overflow:hidden;
     }
-
     .heroGrid{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:stretch}
     @media (max-width:900px){
       .heroGrid{grid-template-columns:1fr}
@@ -122,7 +121,7 @@
       color:#0f172a;
       display:inline-flex;align-items:center;gap:8px;
     }
-    .chip b{font-family:var(--mono);font-weight:700}
+
     .stats{display:grid;grid-template-columns: 1fr 1fr;gap:12px}
     .stat{
       border:1px solid rgba(226,232,240,.9);
@@ -200,7 +199,6 @@
       background: linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.6));
     }
     .dayHeader h3{margin:0;font-size:16px;letter-spacing:-.2px;display:flex;gap:10px;align-items:center}
-    .dayHeader .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
     .hint{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
 
     .timeline{padding:16px 12px 18px;display:grid;gap:12px;position:relative}
@@ -213,39 +211,19 @@
       bottom:0;
       width:2px;
       border-radius:99px;
-      background: rgba(226,232,240,.6); /* 기본값 */
+      background: rgba(226,232,240,.6);
     }
-
     .item[data-tone="blue"]::before{
-      background: linear-gradient(
-        to bottom,
-        rgba(59,130,246,.45),
-        rgba(37,99,235,.35)
-      );
+      background: linear-gradient(to bottom, rgba(59,130,246,.45), rgba(37,99,235,.35));
     }
-
     .item[data-tone="green"]::before{
-      background: linear-gradient(
-        to bottom,
-        rgba(34,197,94,.45),
-        rgba(22,163,74,.35)
-      );
+      background: linear-gradient(to bottom, rgba(34,197,94,.45), rgba(22,163,74,.35));
     }
-
     .item[data-tone="yellow"]::before{
-      background: linear-gradient(
-        to bottom,
-        rgba(234,179,8,.45),
-        rgba(202,138,4,.35)
-      );
+      background: linear-gradient(to bottom, rgba(234,179,8,.45), rgba(202,138,4,.35));
     }
-
     .item[data-tone="orange"]::before{
-      background: linear-gradient(
-        to bottom,
-        rgba(255,122,24,.45),
-        rgba(255,77,0,.35)
-      );
+      background: linear-gradient(to bottom, rgba(255,122,24,.45), rgba(255,77,0,.35));
     }
 
     .item{display:grid;grid-template-columns: 56px 1fr;gap:12px;align-items:start;position:relative;padding-right:6px}
@@ -258,21 +236,7 @@
       text-align:right;
       line-height:1.2;
     }
-    .time2{
-      color: inherit;
-      font-size: inherit;
-      margin-top: 2px;
-    }
-
-    .dot{
-      position:absolute;
-      left:22px; top:6px;
-      width:14px;height:14px;border-radius:999px;
-      /* ✅ 점도 오렌지 그라데이션 */
-      background: var(--orangeGrad);
-      border:3px solid rgba(255,255,255,.95);
-      box-shadow: 0 10px 20px rgba(2,6,23,.10);
-    }
+    .time2{color:inherit;font-size:inherit;margin-top:2px}
 
     .card{
       border:1px solid rgba(226,232,240,.9);
@@ -283,8 +247,9 @@
       transition: transform .12s ease, border-color .12s ease;
     }
     .card:hover{transform:translateY(-1px);border-color:#cbd5e1}
+
     .cardTop{padding:12px 12px 10px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
-    .main{display:flex;gap:10px;align-items:flex-start;min-width: 0}
+    .main{display:flex;gap:10px;align-items:flex-start;min-width:0}
     .emoji{
       width:34px;height:34px;border-radius:12px;
       display:grid;place-items:center;
@@ -305,16 +270,13 @@
       padding:4px 8px;
       border-radius:999px;
       border:1px solid rgba(226,232,240,.9);
-      color: #0f172a;
+      color:#0f172a;
       background: rgba(248,250,252,.8);
     }
-    .tag.orange{border-color: rgba(255,122,24,.25); background: rgba(255,122,24,.10)}
-    .tag.green{border-color: rgba(22,163,74,.25); background: rgba(22,163,74,.10)}
-    /* ✅ [색상 규칙 추가] 교통=블루 / 식당=옐로 / 카페=오렌지 / 숙소=그린 */
     .tag.blue{border-color: rgba(59,130,246,.28); background: rgba(59,130,246,.10)}
+    .tag.green{border-color: rgba(22,163,74,.25); background: rgba(22,163,74,.10)}
     .tag.yellow{border-color: rgba(234,179,8,.28); background: rgba(234,179,8,.12)}
-
-    /* ✅ 검색 결과에서 DAY 표시용 */
+    .tag.orange{border-color: rgba(255,122,24,.25); background: rgba(255,122,24,.10)}
     .tag.day{
       border-color: rgba(148,163,184,.55);
       background: rgba(148,163,184,.14);
@@ -333,7 +295,9 @@
       -webkit-line-clamp:2;
       -webkit-box-orient:vertical;
     }
+
     .rightBtns{display:flex;gap:8px;align-items:center;flex:0 0 auto}
+
     .mini{
       border:1px solid rgba(226,232,240,.9);
       background: rgba(255,255,255,.85);
@@ -344,12 +308,15 @@
       display:inline-flex;align-items:center;gap:8px;
       user-select:none;
       text-decoration:none;
+      white-space:nowrap;
     }
     .mini:hover{border-color:#cbd5e1}
     .mini.done{
       border-color: rgba(22,163,74,.35);
       background: rgba(22,163,74,.10);
     }
+    .mini .lbl{font-size:12px}
+    .mini .ico{line-height:1}
 
     details{border-top:1px dashed rgba(226,232,240,.95);padding:10px 12px 12px;background: rgba(248,250,252,.55)}
     details summary{
@@ -369,8 +336,17 @@
       border:1px solid rgba(226,232,240,.9);
       background: rgba(255,255,255,.8);
     }
-    .kv .k{color:var(--muted);font-size:12px}
-    .kv .v{font-weight:650}
+    .kv .k{color:var(--muted);font-size:12px;white-space:nowrap}
+
+    /* ✅ 디테일 긴 문장: 왼쪽 정렬 + 자연 줄바꿈 + 긴 토큰 안전 */
+    .kv .v{
+      font-weight:650;
+      text-align:left;
+      white-space:normal;
+      word-break:keep-all;
+      overflow-wrap:anywhere;
+      line-height:1.45;
+    }
     .kv code{font-family:var(--mono);font-size:12px;background:rgba(226,232,240,.6);padding:2px 6px;border-radius:8px}
 
     .footer{
@@ -398,219 +374,73 @@
       padding:2px 6px;border-radius:8px;font-size:12px;color:#0f172a
     }
 
-    /* ✅ [후자 적용] 타임라인 점(dot) & 라인(line)까지 타입별 컬러 */
-    .item[data-tone="blue"] .dot{
-      background: linear-gradient(135deg, rgba(59,130,246,.98), rgba(37,99,235,.96));
-    }
-    .item[data-tone="green"] .dot{
-      background: linear-gradient(135deg, rgba(34,197,94,.98), rgba(22,163,74,.96));
-    }
-    .item[data-tone="yellow"] .dot{
-      background: linear-gradient(135deg, rgba(234,179,8,.98), rgba(202,138,4,.96));
-    }
-    .item[data-tone="orange"] .dot{
-      background: var(--orangeGrad);
-    }
-
-    /* 라인도 day별로 바뀌게: timeline에 data-tone 주고 그걸로 오버라이드 */
-    .timeline[data-tone="blue"]::before{
-      background: linear-gradient(to bottom, rgba(59,130,246,.40), rgba(37,99,235,.30));
-    }
-    .timeline[data-tone="green"]::before{
-      background: linear-gradient(to bottom, rgba(34,197,94,.40), rgba(22,163,74,.30));
-    }
-    .timeline[data-tone="yellow"]::before{
-      background: linear-gradient(to bottom, rgba(234,179,8,.40), rgba(202,138,4,.30));
-    }
-    .timeline[data-tone="orange"]::before{
-      background: linear-gradient(to bottom, rgba(255,122,24,.40), rgba(255,77,0,.30));
-    }
-
     /* =========================================================
-   📱 Mobile polish (copy & paste)
-   ========================================================= */
-@media (max-width: 600px){
-
-  /* 전체 여백 정리 */
-  .wrap{
-    padding:16px 12px 60px;
-  }
-
-  /* 히어로 영역 */
-  .hero{
-    padding:16px 14px;
-  }
-  .title h2{
-    font-size:22px;
-    line-height:1.2;
-  }
-  .title p{
-    font-size:13px;
-    line-height:1.5;
-  }
-
-  /* 탭: 가로 스크롤 */
-  .tabs{
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    gap:8px;
-    padding-bottom:6px;
-  }
-  .tabs::-webkit-scrollbar{
-    height:0;
-  }
-  .tab{
-    flex:0 0 auto;
-    white-space:nowrap;
-  }
-
-  /* 통계 카드 1열 */
-  .stats{
-    grid-template-columns:1fr;
-    gap:10px;
-  }
-  .stat .v{
-    font-size:16px;
-  }
-
-  /* 타임라인 */
-  .timeline{
-    padding:12px 10px 14px;
-  }
-  .item{
-    grid-template-columns:48px 1fr;
-    gap:10px;
-  }
-  .time{
-    font-size:11px;
-    padding-top:2px;
-    text-align:right;
-  }
-  .time .time2{
-    font-size:10px;
-    color:var(--muted);
-    margin-top:2px;
-    line-height:1.2;
-  }
-
-  /* 카드 */
-  .cardTop{
-    padding:11px 10px;
-  }
-
-  /* 버튼 */
-  .rightBtns{
-    gap:6px;
-  }
-  .mini{
-    padding:8px 9px;
-    font-size:12px;
-    white-space:nowrap;
-  }
-
-  /* 힌트 문구 숨김 */
-  .hint{
-    display:none;
-  }
-}
-
-    /* =========================================================
-   ✅ Mobile fixes (buttons wrap + note align + detail spacing)
-   ========================================================= */
-@media (max-width: 600px){
-
-  /* 1) [네이버지도] / [체크] 버튼: 모바일에선 줄바꿈(세로 스택) */
-  .cardTop{
-    flex-direction: column;     /* 텍스트/버튼을 위아래로 분리 */
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .main{
-    width: 100%;
-  }
-
-  .rightBtns{
-    width: 100%;
-    display: flex;
-    flex-direction: column;     /* ✅ 버튼 줄바꿈 = 세로로 쌓기 */
-    gap: 8px;
-    align-items: stretch;
-  }
-
-  .mini{
-    width: 100%;
-    justify-content: center;    /* 버튼 텍스트 가운데 정렬 */
-    white-space: normal;        /* ✅ 줄바꿈 허용 */
-  }
-
-  /* 2) 일정 note 정렬: 오른쪽 버튼 때문에 좁아지지 않게(위에서 cardTop 분리로 해결)
-        + 모바일에선 2줄 클램프 해제(원하면 유지 가능) */
-  .txt .subline{
-    -webkit-line-clamp: unset;  /* ✅ note 잘림/정렬 깨짐 방지 */
-    display: block;
-    overflow: visible;
-    text-overflow: unset;
-    margin-top: 8px;
-  }
-
-  /* 3) 디테일(주소/메모/영업시간) 가운데 여백 과다: kv 그리드 폭/패딩 축소 */
-  .detailBody{
-    gap: 8px;
-  }
-
-  .kv{
-    grid-template-columns: 78px 1fr; /* ✅ 왼쪽 라벨 폭 줄임 */
-    gap: 8px;
-    padding: 10px 10px;             /* ✅ 내부 여백 줄임 */
-  }
-
-  .kv .k{
-    font-size: 11px;                /* 라벨 조금 작게 */
-    white-space: nowrap;            /* 라벨 줄바꿈 방지 */
-  }
-
-  .kv .v{
-    word-break: break-word;         /* 긴 글(예약번호/메모) 깨짐 방지 */
-  }
-
-  /* 디테일 안 code칩이 너무 커 보이면 */
-  .kv code{
-    font-size: 11px;
-    padding: 2px 6px;
-  }
-}
-
-    .kv .v{
-  text-align: left;
-  white-space: normal;
-  word-break: keep-all;      /* ✅ 한글 단어 단위 줄바꿈 */
-  overflow-wrap: anywhere;   /* ✅ 예약번호/긴 토큰도 화면 밖으로 안 튐 */
-  line-height: 1.45;
-}
-
-    
+      📱 Mobile polish (핵심: 디테일 공백↓ + 버튼 앱같이 + 노트 정렬)
+    ========================================================= */
     @media (max-width: 600px){
-  /* 디테일 영역 자체 좌우 패딩 줄이기 */
-  details{ padding: 8px 10px 10px; }
-  .detailBody{ gap: 8px; }
+      .wrap{padding:16px 12px 60px}
+      .hero{padding:16px 14px}
+      .title h2{font-size:22px;line-height:1.2}
+      .title p{font-size:13px;line-height:1.5}
 
-  /* kv 카드: 라운드/패딩/갭/컬럼폭 더 타이트 */
-  .kv{
-    grid-template-columns: 64px 1fr;  /* ✅ 라벨폭 더 줄임 */
-    gap: 6px;                         /* ✅ 가운데 간격 줄임 */
-    padding: 8px 10px;                /* ✅ 내부 여백 줄임 */
-    border-radius: 12px;              /* ✅ 라운드 살짝 줄임 */
-  }
-  .kv .k{ font-size: 11px; }
-  .kv .v{ font-size: 13px; }
+      .tabs{
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap:8px;
+        padding-bottom:6px;
+      }
+      .tabs::-webkit-scrollbar{height:0}
+      .tab{flex:0 0 auto;white-space:nowrap}
 
-  /* 주소/영업 같은 값이 가운데처럼 보이지 않게: 왼쪽 정렬 강제 */
-  .kv .v{ text-align:left; }
-}
+      .stats{grid-template-columns:1fr;gap:10px}
+      .stat .v{font-size:16px}
 
+      .timeline{padding:12px 10px 14px}
+      .item{grid-template-columns:48px 1fr;gap:10px}
+      .time{font-size:11px;padding-top:2px;text-align:right}
+      .time2{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.2}
 
+      /* ✅ 노트(서브라인) 모바일에서 2줄 클램프 해제 -> 정렬/잘림 문제 제거 */
+      .txt .subline{
+        display:block;
+        overflow:visible;
+        text-overflow:unset;
+        -webkit-line-clamp:unset;
+        margin-top:8px;
+      }
+
+      /* ✅ 버튼: “📍 지도 / ✅ 체크” 아이콘 버튼 + 작은 텍스트 + 자동 줄바꿈 */
+      .rightBtns{
+        flex-wrap:wrap;          /* 줄바꿈 */
+        gap:8px;
+        justify-content:flex-end;
+      }
+      .mini{
+        padding:8px 10px;
+        border-radius:12px;
+      }
+      .mini .lbl{
+        font-size:11px;          /* 텍스트 작게 */
+      }
+      .mini{
+        flex:1 1 48%;            /* 두 개면 2칸처럼 보이고, 공간 부족하면 자동 줄바꿈 */
+        justify-content:center;
+      }
+
+      /* ✅ 디테일 가운데 공백 줄이기(핵심) */
+      details{padding:8px 10px 10px}
+      .detailBody{gap:8px}
+      .kv{
+        grid-template-columns:64px 1fr;  /* 라벨 폭 줄임 */
+        gap:6px;                         /* 가운데 간격 줄임 */
+        padding:8px 10px;                /* 내부 여백 줄임 */
+        border-radius:12px;
+      }
+      .kv .k{font-size:11px}
+      .kv .v{font-size:13px}
+      .hint{display:none}
+    }
   </style>
 </head>
 
@@ -619,9 +449,7 @@
     <div class="topbar">
       <div class="brand">
         <div class="badge">🤍</div>
-        <div>
-          <h1>Jeju Romantic Trip</h1>
-        </div>
+        <div><h1>Jeju Romantic Trip</h1></div>
       </div>
 
       <div class="actions">
@@ -636,7 +464,6 @@
         <div class="title">
           <h2>🍊 2026년 1월, 제주 2박 3일</h2>
           <p> 다시 우리 손 잡았던 그날의 우린 눈 맞추며 <br> 우린 다른 건 다 없어도 마음만 있음 다 할 수 있다고 🎵</p>
-
           <div class="chips" id="chips"></div>
 
           <div class="progressWrap">
@@ -654,7 +481,7 @@
           </div>
           <div class="stat">
             <div class="k">🚗 Mobility</div>
-            <div class="v" id="statMobility">캐스퍼 </div>
+            <div class="v" id="statMobility">캐스퍼</div>
           </div>
           <div class="stat">
             <div class="k">🏨 Stay</div>
@@ -725,7 +552,6 @@
               time2: "19:50",
               emoji: "✈️",
               type: "교통",
-              accent: "orange",
               title: "김포 → 제주",
               note: "티웨이항공 TW727 · 비행 1시간 15분",
               details: [
@@ -737,7 +563,6 @@
               time: "20:30",
               emoji: "🚗",
               type: "교통",
-              accent: "orange",
               title: "렌트카 픽업",
               note: "캐스퍼 F/L · 렌트카하우스 5구역 10번 · 특별한 렌트카",
               address: "제주시 공항로1길 38",
@@ -754,7 +579,6 @@
               time: "21:30",
               emoji: "🏨",
               type: "숙소",
-              accent: "green",
               title: "다인오세아노 호텔 체크인",
               note: "렌트카 타고 호텔로 이동",
               address: "제주 제주시 애월해안로 394",
@@ -767,7 +591,6 @@
               time: "22:00",
               emoji: "🦐",
               type: "식당",
-              accent: "yellow",
               title: "닻",
               note: "택시로 이동",
               address: "제주 제주시 애월읍 가문동길 41-2 2층",
@@ -789,31 +612,24 @@
               time: "09:00",
               emoji: "🍲",
               type: "식당",
-              accent: "orange",
               title: "삼일해장국",
               note: "07:00~13:20",
               address: "제주 제주시 애월읍 하귀9길 14",
-              details: [
-                ["영업", "07:00~13:20"],
-              ],
+              details: [["영업", "07:00~13:20"]],
             },
             {
               time: "10:30",
               emoji: "💍",
               type: "체험",
-              accent: "green",
               title: "반지공방 아뜰리에호수",
               note: "의미있는 커플링 만들기",
               address: "제주 제주시 협재1길 55-9",
-              details: [
-                ["예약", "10:30, 네이버예약 완료"],
-              ],
+              details: [["예약", "10:30, 네이버예약 완료"]],
             },
             {
               time: "12:00",
               emoji: "🍞",
               type: "카페",
-              accent: "orange",
               title: "브레드다이브",
               note: "08:30~18:00 · 석진이의 빵공부부",
               address: "제주 제주시 한림읍 금능5길 21",
@@ -826,19 +642,14 @@
               time: "13:00",
               emoji: "🚗",
               type: "바다",
-              accent: "green",
               title: "해안도로 드라이브",
               note: "반지 기다리면서 여유로운 시간 보내기",
-              address: "",
-              details: [
-                ["메모", "사이좋게 지내기"],
-              ],
+              details: [["메모", "사이좋게 지내기"]],
             },
             {
               time: "14:00",
               emoji: "🍱",
               type: "식당",
-              accent: "orange",
               title: "우니담",
               note: "15:00~16:00 브레이크타임",
               address: "제주 제주시 애월읍 고내로13길 107 2층",
@@ -851,7 +662,6 @@
               time: "17:30",
               emoji: "🏊",
               type: "숙소",
-              accent: "green",
               title: "인피니티풀",
               note: "숨 참고 Love Dive",
               address: "다인오세아노 호텔",
@@ -864,7 +674,6 @@
               time: "20:00",
               emoji: "🐷",
               type: "식당",
-              accent: "orange",
               title: "고이정",
               note: "애월흑돼지 보리짚불구이",
               address: "제주 제주시 애월읍 애월로 6 고이정",
@@ -878,7 +687,6 @@
               time: "22:00",
               emoji: "🍢",
               type: "식당",
-              accent: "green",
               title: "이치니치",
               note: "함께 술마시는 공간",
               address: "제주 제주시 애월읍 애월로11길 7 1층 이치니치",
@@ -901,18 +709,14 @@
               time: "10:30",
               emoji: "🏨",
               type: "숙소",
-              accent: "green",
               title: "체크아웃",
               note: "짐 정리하고 여유 있게 출발",
-              details: [
-                ["미션", "권소연 깨우기"],
-              ],
+              details: [["미션", "권소연 깨우기"]],
             },
             {
               time: "11:00",
               emoji: "🍲",
               type: "식당",
-              accent: "orange",
               title: "임순이네밥집",
               note: "뜨듯하게 해장",
               address: "제주 제주시 애월읍 곽지9길 8-1",
@@ -925,19 +729,15 @@
               time: "12:00",
               emoji: "🚶",
               type: "바다",
-              accent: "green",
               title: "한담해안산책로",
               note: "바람과 바다와 우리",
               address: "제주 제주시 애월읍 곽지리 1359",
-              details: [
-                ["메모", "돌고래 보고싶다 🐬🐬🐬"],
-              ],
+              details: [["메모", "돌고래 보고싶다 🐬🐬🐬"]],
             },
             {
               time: "12:30",
               emoji: "🍊",
               type: "카페",
-              accent: "orange",
               title: "귤귤스토어 애월점",
               note: "미피가 기다리는 소품샵",
               address: "제주 제주시 애월읍 애월로1길 24-13",
@@ -950,7 +750,6 @@
               time: "13:00",
               emoji: "☕",
               type: "카페",
-              accent: "green",
               title: "인디고인디드",
               note: "바다 보며 마시는 맛있는 커피",
               address: "제주 제주시 애월읍 애월해안로 204",
@@ -963,24 +762,20 @@
               time: "14:00",
               emoji: "🚗",
               type: "교통",
-              accent: "green",
               title: "렌트카 반납",
               note: "공항 근처로 여유 있게 이동",
               address: "제주시 공항로1길 38",
-              details: [
-                ["반납", "14:00 전후"],
-              ],
+              details: [["반납", "14:00 전후"]],
             },
             {
               time: "14:30",
               emoji: "🦪",
               type: "식당",
-              accent: "orange",
               title: "도두해녀의집",
               note: "돌아가기 전 마지막 만찬",
               address: "제주 제주시 연신로 51",
               details: [
-                ["영업", "10:00~20:00, 15:30~17:00 브레이크타임 "],
+                ["영업", "10:00~20:00, 15:30~17:00 브레이크타임"],
                 ["메뉴", "전복죽, 물회"],
               ],
             },
@@ -989,7 +784,6 @@
               time2: "18:25",
               emoji: "✈️",
               type: "교통",
-              accent: "orange",
               title: "제주 → 김포",
               note: "티웨이항공 TW724 · 비행 1시간 15분",
               details: [
@@ -1013,7 +807,6 @@
       window.__t = setTimeout(()=>t.classList.remove("show"), 1300);
     };
 
-    // ✅ 네이버 지도 검색 URL (구글 지도 제거)
     const encodeNaverMap = (q) => "https://map.naver.com/v5/search/" + encodeURIComponent(q);
 
     // LocalStorage for "done"
@@ -1042,7 +835,7 @@
       el.className = "tab" + (idx===0 ? " active":"");
       el.type = "button";
       el.dataset.day = d.id;
-      el.innerHTML = `${d.titleEmoji} <b>${d.label}</b> `;
+      el.innerHTML = `${d.titleEmoji} <b>${d.label}</b>`;
       el.addEventListener("click", ()=>{
         activeDay = d.id;
         setHash(activeDay);
@@ -1059,40 +852,34 @@
       if(trip.days.some(d=>d.id===h)) activeDay = h;
     }
 
-    /* ✅ [색상 규칙] type 기반 tone/tagClass 계산 (방금 얘기한 색상만 반영) */
+    // 색상 규칙: type -> tone
     function typeToTone(typeStr){
       const t = (typeStr || "").trim();
-      if(t.includes("교통") || t.includes("이동")) return "blue";          // [교통] 블루
-      if(t.includes("숙소") || t.includes("호텔")) return "green";         // [숙소] 그린
-      if(t.includes("카페") || t.includes("베이커리")) return "orange";    // [카페] 오렌지
-      if(t.includes("식당") || t.includes("식사")) return "yellow";        // [식당/식사] 옐로
-      return "orange"; // fallback
+      if(t.includes("교통") || t.includes("이동")) return "blue";
+      if(t.includes("숙소") || t.includes("호텔")) return "green";
+      if(t.includes("카페") || t.includes("베이커리")) return "orange";
+      if(t.includes("식당") || t.includes("식사")) return "yellow";
+      return "orange";
     }
     function toneToTagClass(tone){
       return tone ? `tag ${tone}` : "tag";
     }
 
-    // ===== Render =====
     function render(){
       $$(".tab").forEach(t=>t.classList.toggle("active", t.dataset.day===activeDay));
-
       const day = trip.days.find(d=>d.id===activeDay);
 
       const qRaw = ($("#q").value || "").trim();
       const q = qRaw.toLowerCase();
-
-      // ✅ 검색어가 있으면 "전체 일정 검색" 모드
       const isSearching = !!qRaw;
 
-      // 헤더 텍스트: 검색 중이면 전체 검색(결과 없으면 공백 처리)
       $("#dayTitle").textContent = isSearching
         ? `🔎 전체 일정 검색 · “${qRaw}”`
-        : `${day.titleEmoji} ${day.label} · ${day.dateText} `;
+        : `${day.titleEmoji} ${day.label} · ${day.dateText}`;
 
       const tl = $("#timeline");
       tl.innerHTML = "";
 
-      // ✅ 검색어가 있으면 3일 전체 풀에서 검색, 없으면 선택된 day만
       const pool = isSearching
         ? trip.days.flatMap(d => d.items.map((it, idx) => ({ day: d, it, idx })))
         : day.items.map((it, idx) => ({ day, it, idx }));
@@ -1106,15 +893,12 @@
         return hay.includes(q);
       });
 
-      // ✅ 검색 결과가 0개면 "아무것도 안 나오게" (타임라인 비움)
       if(isSearching && filtered.length === 0){
-        // 헤더도 비우고 싶으면 아래 한 줄 유지 (원치 않으면 지워도 됨)
         $("#dayTitle").textContent = "";
         renderProgress();
         return;
       }
 
-      /* ✅ day의 "대표 tone"으로 타임라인 라인 색 결정 (첫 일정 기준) */
       const dayTone = typeToTone((day.items[0] && day.items[0].type) ? day.items[0].type : "");
       tl.dataset.tone = dayTone;
 
@@ -1139,17 +923,19 @@
         card.className = "card";
 
         const tagClass = toneToTagClass(tone);
-
-        const hasAddress = !!(it.address && it.address.trim());
-        const mapUrl = hasAddress ? encodeNaverMap(it.address.trim()) : ""; 
-        const mapBtnHtml = hasAddress
-           ? `<a class="mini" data-act="map" href="${mapUrl}" target="_blank" rel="noopener">📍 네이버지도</a>`
-           : "";
-
         const dayBadge = isSearching ? `<span class="tag day">${d.label}</span>` : "";
 
+        const hasAddress = !!(it.address && it.address.trim());
+        const mapUrl = hasAddress ? encodeNaverMap(it.address.trim()) : "";
 
+        const mapBtnHTML = hasAddress
+          ? `<a class="mini" data-act="map" href="${mapUrl}" target="_blank" rel="noopener" title="네이버지도">
+               <span class="ico">📍</span><span class="lbl">지도</span>
+             </a>`
+          : ``;
 
+        const doneLabel = isDone ? "체크됨" : "체크";
+        const doneIcon  = isDone ? "✅" : "☑️";
 
         card.innerHTML = `
           <div class="cardTop">
@@ -1165,25 +951,12 @@
               </div>
             </div>
 
-            
-            const mapBtnHTML = it.address && it.address.trim()
-              ? `<a class="mini" data-act="map" href="${mapUrl}" target="_blank" rel="noopener" title="네이버지도">
-                    <span class="ico">📍</span><span class="lbl">지도</span>
-                </a>`
-              : ``;
-
-const doneLabel = isDone ? "체크됨" : "체크";
-const doneIcon  = isDone ? "✅" : "☑️";
-
-
             <div class="rightBtns">
               ${mapBtnHTML}
-              <button class="mini ${isDone ? "done":""}" data-act="done" title="완료 체크">
+              <button class="mini ${isDone ? "done":""}" data-act="done" type="button" title="완료 체크">
                 <span class="ico">${doneIcon}</span><span class="lbl">${doneLabel}</span>
-                </button>
+              </button>
             </div>
-
-
           </div>
 
           <details ${expandAll ? "open":""}>
@@ -1192,7 +965,7 @@ const doneIcon  = isDone ? "✅" : "☑️";
               <span>↕︎</span>
             </summary>
             <div class="detailBody">
-              ${it.address ? `
+              ${hasAddress ? `
                 <div class="kv">
                   <div class="k">주소</div>
                   <div class="v">${it.address}</div>
@@ -1248,16 +1021,9 @@ const doneIcon  = isDone ? "✅" : "☑️";
       $("#doneCount").textContent = doneCount;
       $("#pct").textContent = pct + "%";
       $("#bar").style.width = pct + "%";
-
-      const foodCount = trip.days.flatMap(d=>d.items)
-        .filter(i=>(i.type||"").includes("식사") || (i.type||"").includes("카페") || (i.type||"")==="카페/베이커리")
-        .length;
-      // 원래 코드에 #statFood가 없어서 그대로 두면 에러 날 수 있음
-      // (네 코드 유지 목적상 아래 라인은 원문 유지했지만, 실제로는 id가 없으면 주석 처리 권장)
-      // $("#statFood").textContent = foodCount;
     }
 
-    // ===== Actions =====
+    // Actions
     $("#copyLink").addEventListener("click", async ()=>{
       try{
         setHash(activeDay);
@@ -1283,6 +1049,7 @@ const doneIcon  = isDone ? "✅" : "☑️";
     });
 
     $("#q").addEventListener("input", ()=>render());
+
     window.addEventListener("keydown", (e)=>{
       if(e.key === "/"){
         e.preventDefault();
@@ -1298,13 +1065,10 @@ const doneIcon  = isDone ? "✅" : "☑️";
       }
     });
 
-    // ===== Init =====
+    // Init
     readHash();
     setHash(activeDay);
     render();
   </script>
 </body>
 </html>
-
-
-
