@@ -248,8 +248,14 @@
     }
     .card:hover{transform:translateY(-1px);border-color:#cbd5e1}
 
-    .cardTop{padding:12px 12px 10px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
-    .main{display:flex;gap:10px;align-items:flex-start;min-width:0}
+    /* ✅ cardTop: 헤더줄 + note줄 + details */
+    .cardTop{padding:12px 12px 10px;display:flex;flex-direction:column;gap:8px}
+
+    /* ✅ 헤더 한 줄: 왼쪽(아이콘/제목/태그) + 오른쪽(버튼) */
+    .headRow{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+
+    .mainHead{display:flex;gap:10px;align-items:flex-start;min-width:0;flex:1 1 auto}
+
     .emoji{
       width:34px;height:34px;border-radius:12px;
       display:grid;place-items:center;
@@ -265,6 +271,7 @@
       display:flex;gap:8px;align-items:center;flex-wrap:wrap;
       margin-top:1px;
     }
+
     .tag{
       font-size:11px;
       padding:4px 8px;
@@ -284,16 +291,16 @@
       letter-spacing: .2px;
     }
 
-    .txt .subline{
-      margin-top:6px;
-      font-size:12px;
+    /* ✅ note는 버튼 영향 없이 전체 폭 */
+    .sublineFull{
       color:var(--muted);
+      font-size:12px;
       line-height:1.5;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      padding-left:44px; /* 아이콘(34)+gap(10) 만큼 들여쓰기: 제목 시작선 맞춤 */
       display:-webkit-box;
       -webkit-line-clamp:2;
       -webkit-box-orient:vertical;
+      overflow:hidden;
     }
 
     .rightBtns{display:flex;gap:8px;align-items:center;flex:0 0 auto}
@@ -375,7 +382,7 @@
     }
 
     /* =========================================================
-      📱 Mobile polish (핵심: 디테일 공백↓ + 버튼 앱같이 + 노트 정렬)
+      📱 Mobile polish
     ========================================================= */
     @media (max-width: 600px){
       .wrap{padding:16px 12px 60px}
@@ -401,40 +408,36 @@
       .time{font-size:11px;padding-top:2px;text-align:right}
       .time2{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.2}
 
-      /* ✅ 노트(서브라인) 모바일에서 2줄 클램프 해제 -> 정렬/잘림 문제 제거 */
-      .txt .subline{
+      /* ✅ note: 모바일은 2줄 제한 해제(원하면 지워도 됨) */
+      .sublineFull{
         display:block;
         overflow:visible;
-        text-overflow:unset;
         -webkit-line-clamp:unset;
-        margin-top:8px;
+        padding-left:44px;
+        margin-top:2px;
       }
 
-      /* ✅ 버튼: “📍 지도 / ✅ 체크” 아이콘 버튼 + 작은 텍스트 + 자동 줄바꿈 */
+      /* ✅ 버튼: 아이콘 버튼 + 자동 줄바꿈 */
       .rightBtns{
-        flex-wrap:wrap;          /* 줄바꿈 */
+        flex-wrap:wrap;
         gap:8px;
         justify-content:flex-end;
       }
       .mini{
+        flex:1 1 48%;
+        justify-content:center;
         padding:8px 10px;
         border-radius:12px;
       }
-      .mini .lbl{
-        font-size:11px;          /* 텍스트 작게 */
-      }
-      .mini{
-        flex:1 1 48%;            /* 두 개면 2칸처럼 보이고, 공간 부족하면 자동 줄바꿈 */
-        justify-content:center;
-      }
+      .mini .lbl{font-size:11px}
 
-      /* ✅ 디테일 가운데 공백 줄이기(핵심) */
+      /* ✅ 디테일 가운데 공백 줄이기 */
       details{padding:8px 10px 10px}
       .detailBody{gap:8px}
       .kv{
-        grid-template-columns:64px 1fr;  /* 라벨 폭 줄임 */
-        gap:6px;                         /* 가운데 간격 줄임 */
-        padding:8px 10px;                /* 내부 여백 줄임 */
+        grid-template-columns:64px 1fr;
+        gap:6px;
+        padding:8px 10px;
         border-radius:12px;
       }
       .kv .k{font-size:11px}
@@ -939,53 +942,57 @@
 
         card.innerHTML = `
           <div class="cardTop">
-            <div class="main">
-              <div class="emoji">${it.emoji || "✨"}</div>
-              <div class="txt">
-                <div class="name">
-                  <span>${it.title}</span>
-                  ${dayBadge}
-                  <span class="${tagClass}">${it.type || "일정"}</span>
+            <div class="headRow">
+              <div class="mainHead">
+                <div class="emoji">${it.emoji || "✨"}</div>
+                <div class="txt">
+                  <div class="name">
+                    <span>${it.title}</span>
+                    ${dayBadge}
+                    <span class="${tagClass}">${it.type || "일정"}</span>
+                  </div>
                 </div>
-                <div class="subline">${it.note || ""}</div>
+              </div>
+
+              <div class="rightBtns">
+                ${mapBtnHTML}
+                <button class="mini ${isDone ? "done":""}" data-act="done" type="button" title="완료 체크">
+                  <span class="ico">${doneIcon}</span><span class="lbl">${doneLabel}</span>
+                </button>
               </div>
             </div>
 
-            <div class="rightBtns">
-              ${mapBtnHTML}
-              <button class="mini ${isDone ? "done":""}" data-act="done" type="button" title="완료 체크">
-                <span class="ico">${doneIcon}</span><span class="lbl">${doneLabel}</span>
-              </button>
-            </div>
-          </div>
+            ${it.note ? `<div class="sublineFull">${it.note}</div>` : ``}
 
-          <details ${expandAll ? "open":""}>
-            <summary>
-              <span>디테일 보기</span>
-              <span>↕︎</span>
-            </summary>
-            <div class="detailBody">
-              ${hasAddress ? `
-                <div class="kv">
-                  <div class="k">주소</div>
-                  <div class="v">${it.address}</div>
-                </div>` : ""
-              }
-              ${it.details && it.details.length ? it.details.map(([k,v])=>`
-                <div class="kv">
-                  <div class="k">${k}</div>
-                  <div class="v">${v}</div>
-                </div>
-              `).join("") : `
-                <div class="kv">
-                  <div class="k">메모</div>
-                  <div class="v">필요한 디테일만 딱. 나머지는 현지에서 감으로도 OK.</div>
-                </div>
-              `}
-            </div>
-          </details>
+            <details ${expandAll ? "open":""}>
+              <summary>
+                <span>디테일 보기</span>
+                <span>↕︎</span>
+              </summary>
+              <div class="detailBody">
+                ${hasAddress ? `
+                  <div class="kv">
+                    <div class="k">주소</div>
+                    <div class="v">${it.address}</div>
+                  </div>` : ""
+                }
+                ${it.details && it.details.length ? it.details.map(([k,v])=>`
+                  <div class="kv">
+                    <div class="k">${k}</div>
+                    <div class="v">${v}</div>
+                  </div>
+                `).join("") : `
+                  <div class="kv">
+                    <div class="k">메모</div>
+                    <div class="v">필요한 디테일만 딱. 나머지는 현지에서 감으로도 OK.</div>
+                  </div>
+                `}
+              </div>
+            </details>
+          </div>
         `;
 
+        // ✅ 체크 버튼
         card.querySelector('[data-act="done"]').addEventListener("click", (e)=>{
           e.preventDefault();
           e.stopPropagation();
@@ -995,7 +1002,18 @@
           render();
         });
 
-        card.querySelector(".cardTop").addEventListener("click", ()=>{
+        // ✅ 지도 버튼 눌렀을 때 디테일 토글 안 되게
+        const mapA = card.querySelector('[data-act="map"]');
+        if(mapA){
+          mapA.addEventListener("click", (e)=>{
+            e.stopPropagation();
+          });
+        }
+
+        // ✅ 카드 헤더/노트 영역 클릭하면 디테일 토글
+        card.querySelector(".cardTop").addEventListener("click", (e)=>{
+          // details/summary 클릭은 기본 동작 유지
+          if(e.target.closest("details")) return;
           const det = card.querySelector("details");
           det.open = !det.open;
         });
