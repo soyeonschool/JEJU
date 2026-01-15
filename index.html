@@ -1,0 +1,1117 @@
+<!doctype html> 
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>2026.01 Jeju Romantic Trip</title>
+  <meta name="color-scheme" content="light" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --card:#ffffff;
+      --line:#e2e8f0;
+      --shadow: 0 12px 30px rgba(2,6,23,.08);
+      --shadow2: 0 8px 20px rgba(2,6,23,.06);
+
+      /* ✅ 포인트 컬러 */
+      --orange:#ff7a18;
+      --orange2:#ff4d00;  /* 더 딥한 오렌지 */
+      --green:#16a34a;
+
+      /* ✅ 오렌지 단색/오렌지 그라데이션(혼합 금지) */
+      --orangeGrad: linear-gradient(135deg, rgba(255,122,24,.98), rgba(255,77,0,.96));
+
+      --soft: #f8fafc;
+      --radius: 18px;
+      --radius2: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, "Helvetica Neue", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(255,122,24,.12), transparent 55%),
+        radial-gradient(1000px 700px at 95% 0%, rgba(22,163,74,.10), transparent 52%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 80px}
+    .topbar{
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+      position:sticky;top:0;z-index:50;
+      background: linear-gradient(to bottom, rgba(255,255,255,.92), rgba(255,255,255,.75));
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(226,232,240,.7);
+      padding:14px 12px;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .badge{
+      width:44px;height:44px;border-radius:14px;
+      /* ✅ 오렌지 그라데이션으로 변경 */
+      background: var(--orangeGrad);
+      box-shadow: 0 12px 22px rgba(255,122,24,.22);
+      display:grid;place-items:center;
+      color:#fff;font-weight:800;
+      letter-spacing:.5px;
+    }
+    .brand h1{font-size:16px;margin:0;line-height:1.2}
+    .brand .sub{font-size:12px;color:var(--muted);margin-top:2px}
+    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.85);
+      box-shadow: var(--shadow2);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size:13px;
+      cursor:pointer;
+      display:inline-flex;align-items:center;gap:8px;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color:#cbd5e1}
+    .btn:active{transform: translateY(0px); box-shadow:none}
+    .btn.primary{
+      border:none;
+      color:#fff;
+      /* ✅ (오렌지+그린 혼합 제거) 오렌지 그라데이션만 */
+      background: var(--orangeGrad);
+    }
+    .btn.ghost{background:transparent; box-shadow:none}
+    .pill{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:rgba(255,255,255,.7);
+      color:#0f172a;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+
+    .hero{
+      margin-top:16px;
+      padding:22px 18px;
+      border:1px solid rgba(226,232,240,.8);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .heroGrid{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:stretch}
+    @media (max-width:900px){
+      .heroGrid{grid-template-columns:1fr}
+      .actions{justify-content:flex-start}
+    }
+    .title{display:flex;flex-direction:column;gap:10px}
+    .title h2{margin:0;font-size:28px;letter-spacing:-.5px;line-height:1.1}
+    .title p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{
+      border:1px solid rgba(226,232,240,.9);
+      background: rgba(248,250,252,.7);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:#0f172a;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .chip b{font-family:var(--mono);font-weight:700}
+    .stats{display:grid;grid-template-columns: 1fr 1fr;gap:12px}
+    .stat{
+      border:1px solid rgba(226,232,240,.9);
+      border-radius: var(--radius2);
+      padding:12px 12px;
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow2);
+      min-height:74px;
+    }
+    .stat .k{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
+    .stat .v{margin-top:6px;font-size:18px;font-weight:800;letter-spacing:-.3px}
+
+    .progressWrap{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .progress{
+      flex:1;height:12px;border-radius:999px;
+      background: rgba(226,232,240,.75);
+      overflow:hidden;
+      border:1px solid rgba(226,232,240,.9);
+      min-width:220px;
+    }
+    .bar{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      /* ✅ 진행바도 오렌지 그라데이션만 */
+      background: linear-gradient(90deg, rgba(255,122,24,.98), rgba(255,77,0,.96));
+      transition: width .35s ease;
+    }
+    .small{font-size:12px;color:var(--muted)}
+
+    .controls{margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap}
+    .tab{
+      padding:10px 12px;border-radius:999px;
+      border:1px solid rgba(226,232,240,.9);
+      background: rgba(255,255,255,.8);
+      box-shadow: var(--shadow2);
+      cursor:pointer;
+      display:inline-flex;align-items:center;gap:10px;
+      transition: transform .12s ease, border-color .12s ease;
+      user-select:none;
+      font-size:13px;
+    }
+    .tab:hover{transform:translateY(-1px);border-color:#cbd5e1}
+    .tab.active{
+      border-color: transparent;
+      color:#fff;
+      /* ✅ 탭 활성도 오렌지 그라데이션 */
+      background: var(--orangeGrad);
+    }
+    .search{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .input{position:relative}
+    input[type="search"]{
+      width:min(360px, 86vw);
+      padding:10px 12px 10px 36px;
+      border-radius: 999px;
+      border:1px solid rgba(226,232,240,.95);
+      background: rgba(255,255,255,.85);
+      box-shadow: var(--shadow2);
+      outline:none;
+      font-size:13px;
+    }
+    .input .icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+
+    .board{
+      margin-top:14px;
+      border:1px solid rgba(226,232,240,.9);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.7);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .dayHeader{
+      padding:16px 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      border-bottom:1px solid rgba(226,232,240,.9);
+      background: linear-gradient(180deg, rgba(248,250,252,.92), rgba(255,255,255,.6));
+    }
+    .dayHeader h3{margin:0;font-size:16px;letter-spacing:-.2px;display:flex;gap:10px;align-items:center}
+    .dayHeader .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .hint{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
+
+    .timeline{padding:16px 12px 18px;display:grid;gap:12px;position:relative}
+
+    .item::before{
+      content:"";
+      position:absolute;
+      left:14px;
+      top:0;
+      bottom:0;
+      width:2px;
+      border-radius:99px;
+      background: rgba(226,232,240,.6); /* 기본값 */
+    }
+
+    .item[data-tone="blue"]::before{
+      background: linear-gradient(
+        to bottom,
+        rgba(59,130,246,.45),
+        rgba(37,99,235,.35)
+      );
+    }
+
+    .item[data-tone="green"]::before{
+      background: linear-gradient(
+        to bottom,
+        rgba(34,197,94,.45),
+        rgba(22,163,74,.35)
+      );
+    }
+
+    .item[data-tone="yellow"]::before{
+      background: linear-gradient(
+        to bottom,
+        rgba(234,179,8,.45),
+        rgba(202,138,4,.35)
+      );
+    }
+
+    .item[data-tone="orange"]::before{
+      background: linear-gradient(
+        to bottom,
+        rgba(255,122,24,.45),
+        rgba(255,77,0,.35)
+      );
+    }
+
+    .item{display:grid;grid-template-columns: 56px 1fr;gap:12px;align-items:start;position:relative;padding-right:6px}
+    .time{
+      position:relative;
+      font-family: var(--mono);
+      font-size:12px;
+      color:#0f172a;
+      padding-top:4px;
+      text-align:right;
+      line-height:1.2;
+    }
+    .time2{
+      color: inherit;
+      font-size: inherit;
+      margin-top: 2px;
+    }
+
+    .dot{
+      position:absolute;
+      left:22px; top:6px;
+      width:14px;height:14px;border-radius:999px;
+      /* ✅ 점도 오렌지 그라데이션 */
+      background: var(--orangeGrad);
+      border:3px solid rgba(255,255,255,.95);
+      box-shadow: 0 10px 20px rgba(2,6,23,.10);
+    }
+
+    .card{
+      border:1px solid rgba(226,232,240,.9);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.86);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-1px);border-color:#cbd5e1}
+    .cardTop{padding:12px 12px 10px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+    .main{display:flex;gap:10px;align-items:flex-start;min-width: 0}
+    .emoji{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      background: rgba(248,250,252,.9);
+      border:1px solid rgba(226,232,240,.9);
+      flex:0 0 auto;
+      font-size:16px;
+    }
+    .txt{min-width:0}
+    .txt .name{
+      font-weight:800;
+      letter-spacing:-.2px;
+      display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+      margin-top:1px;
+    }
+    .tag{
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(226,232,240,.9);
+      color: #0f172a;
+      background: rgba(248,250,252,.8);
+    }
+    .tag.orange{border-color: rgba(255,122,24,.25); background: rgba(255,122,24,.10)}
+    .tag.green{border-color: rgba(22,163,74,.25); background: rgba(22,163,74,.10)}
+    /* ✅ [색상 규칙 추가] 교통=블루 / 식당=옐로 / 카페=오렌지 / 숙소=그린 */
+    .tag.blue{border-color: rgba(59,130,246,.28); background: rgba(59,130,246,.10)}
+    .tag.yellow{border-color: rgba(234,179,8,.28); background: rgba(234,179,8,.12)}
+
+    /* ✅ 검색 결과에서 DAY 표시용 */
+    .tag.day{
+      border-color: rgba(148,163,184,.55);
+      background: rgba(148,163,184,.14);
+      font-family: var(--mono);
+      letter-spacing: .2px;
+    }
+
+    .txt .subline{
+      margin-top:6px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+    }
+    .rightBtns{display:flex;gap:8px;align-items:center;flex:0 0 auto}
+    .mini{
+      border:1px solid rgba(226,232,240,.9);
+      background: rgba(255,255,255,.85);
+      border-radius: 12px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-size:12px;
+      display:inline-flex;align-items:center;gap:8px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .mini:hover{border-color:#cbd5e1}
+    .mini.done{
+      border-color: rgba(22,163,74,.35);
+      background: rgba(22,163,74,.10);
+    }
+
+    details{border-top:1px dashed rgba(226,232,240,.95);padding:10px 12px 12px;background: rgba(248,250,252,.55)}
+    details summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      font-size:12px;color:var(--muted);
+    }
+    details summary::-webkit-details-marker{display:none}
+    .detailBody{margin-top:10px;display:grid;gap:10px;font-size:13px;line-height:1.6}
+    .kv{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap:10px;
+      padding:10px 10px;
+      border-radius:14px;
+      border:1px solid rgba(226,232,240,.9);
+      background: rgba(255,255,255,.8);
+    }
+    .kv .k{color:var(--muted);font-size:12px}
+    .kv .v{font-weight:650}
+    .kv code{font-family:var(--mono);font-size:12px;background:rgba(226,232,240,.6);padding:2px 6px;border-radius:8px}
+
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    }
+    .toast{
+      position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+      background: rgba(15,23,42,.92);
+      color:#fff;
+      padding:10px 12px;border-radius:999px;
+      font-size:12px;
+      box-shadow: 0 20px 40px rgba(2,6,23,.22);
+      opacity:0;pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index:99;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-2px)}
+    .kbd{
+      font-family:var(--mono);
+      border:1px solid rgba(226,232,240,.9);
+      background: rgba(255,255,255,.85);
+      padding:2px 6px;border-radius:8px;font-size:12px;color:#0f172a
+    }
+
+    /* ✅ [후자 적용] 타임라인 점(dot) & 라인(line)까지 타입별 컬러 */
+    .item[data-tone="blue"] .dot{
+      background: linear-gradient(135deg, rgba(59,130,246,.98), rgba(37,99,235,.96));
+    }
+    .item[data-tone="green"] .dot{
+      background: linear-gradient(135deg, rgba(34,197,94,.98), rgba(22,163,74,.96));
+    }
+    .item[data-tone="yellow"] .dot{
+      background: linear-gradient(135deg, rgba(234,179,8,.98), rgba(202,138,4,.96));
+    }
+    .item[data-tone="orange"] .dot{
+      background: var(--orangeGrad);
+    }
+
+    /* 라인도 day별로 바뀌게: timeline에 data-tone 주고 그걸로 오버라이드 */
+    .timeline[data-tone="blue"]::before{
+      background: linear-gradient(to bottom, rgba(59,130,246,.40), rgba(37,99,235,.30));
+    }
+    .timeline[data-tone="green"]::before{
+      background: linear-gradient(to bottom, rgba(34,197,94,.40), rgba(22,163,74,.30));
+    }
+    .timeline[data-tone="yellow"]::before{
+      background: linear-gradient(to bottom, rgba(234,179,8,.40), rgba(202,138,4,.30));
+    }
+    .timeline[data-tone="orange"]::before{
+      background: linear-gradient(to bottom, rgba(255,122,24,.40), rgba(255,77,0,.30));
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="badge">🤍</div>
+        <div>
+          <h1>Jeju Romantic Trip</h1>
+          <div class="sub">기억 덮어쓰기 프로젝트</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <span class="pill">📅 <b>2026.01.17</b> → <b>2026.01.19</b></span>
+        <button class="btn" id="copyLink">🔗 링크 복사</button>
+        <button class="btn primary" id="resetDone">♻️ 체크 리셋</button>
+      </div>
+    </div>
+
+    <section class="hero" aria-label="요약">
+      <div class="heroGrid">
+        <div class="title">
+          <h2>🍊 2026년 1월, 제주 2박 3일</h2>
+          <p> 다시 우리 손 잡았던 그날의 우린 눈 맞추며 <br> 우린 다른 건 다 없어도 마음만 있음 다 할 수 있다고 🎵</p>
+
+          <div class="chips" id="chips"></div>
+
+          <div class="progressWrap">
+            <div class="progress" aria-label="진행률">
+              <div class="bar" id="bar"></div>
+            </div>
+            <div class="small"><span id="doneCount">0</span>/<span id="totalCount">0</span> done · <span id="pct">0%</span></div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="k">✈️ Flights</div>
+            <div class="v" id="statFlights">티웨이항공</div>
+          </div>
+          <div class="stat">
+            <div class="k">🚗 Mobility</div>
+            <div class="v" id="statMobility">특별한 렌터카 <br> 캐스퍼 </div>
+          </div>
+          <div class="stat">
+            <div class="k">🏨 Stay</div>
+            <div class="v">다인오세아노 호텔</div>
+          </div>
+          <div class="stat">
+            <div class="k">🌊 Main Spots</div>
+            <div class="v">애월</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="tabs" id="tabs"></div>
+
+        <div class="search">
+          <div class="input">
+            <span class="icon">🔎</span>
+            <input id="q" type="search" placeholder="검색: 예) 흑돼지 / 인피니티풀 / 공항 / …" autocomplete="off" />
+          </div>
+          <button class="btn ghost" id="expandAll">🧾 디테일 전체 펼치기</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="board" aria-label="일정 보드">
+      <div class="dayHeader">
+        <h3 id="dayTitle">—</h3>
+        <div class="meta">
+          <span class="hint">✨ 팁: 카드 클릭 → <b>디테일</b> 펼치기</span>
+        </div>
+      </div>
+
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <div class="footer">
+      <div>Made for sharing. Clean, hip, and actually useful.</div>
+      <div>단축키: <span class="kbd">/</span> 검색 포커스 · <span class="kbd">Esc</span> 검색 지우기</div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">복사 완료</div>
+
+  <script>
+    // ===== Data =====
+    const trip = {
+      title: "Jeju Romantic Trip",
+      range: { start: "2026-01-17", end: "2026-01-19", tz: "Asia/Seoul" },
+      highlights: [
+        { emoji:"🧡", text:"바다" },
+        { emoji:"🏊", text:"인피니티풀" },
+        { emoji:"🔥", text:"흑돼지" },
+        { emoji:"🦐", text:"딱새우" },
+        { emoji:"💍", text:"LOVE" },
+        { emoji:"🥖", text:"빵" },
+      ],
+      days: [
+        {
+          id: "d1",
+          label: "DAY 1",
+          dateText: "1/17 (토)",
+          titleEmoji: "🛬",
+          subtitle: "도착 · 렌트카 · 체크인",
+          items: [
+            {
+              time: "18:35",
+              time2: "19:50",
+              emoji: "✈️",
+              type: "교통",
+              accent: "orange",
+              title: "김포 → 제주",
+              note: "티웨이항공 TW727 · 비행 1시간 15분",
+              details: [
+                ["항공", "티웨이항공 <code>TW727</code>"],
+                ["출발/도착", "18:35 → 19:50 (예상)"],
+              ],
+            },
+            {
+              time: "20:30",
+              emoji: "🚗",
+              type: "교통",
+              accent: "orange",
+              title: "렌트카 픽업",
+              note: "캐스퍼 F/L · 렌트카하우스 5구역 10번 · 특별한 렌트카",
+              address: "제주시 공항로1길 38",
+              details: [
+                ["업체명", "특별한 렌트카"],
+                ["예약번호", "<code>RS1984048</code>"],
+                ["예약자", "박석진"],
+                ["대여기간", "2026.01.17(토) 20:00 → 2026.01.19(월) 15:00"],
+                ["차종", "캐스퍼 F/L, 휘발유"],
+                ["셔틀탑승", "렌트카하우스 5구역 10번"],
+                ["메모", "20:00~21:00 렌트카 회사 마감시간 이후 출고 시 추가금 10,000 (대신 셔틀 이용 가능)"],
+              ],
+            },
+            {
+              time: "21:30",
+              emoji: "🏨",
+              type: "숙소",
+              accent: "green",
+              title: "다인오세아노 호텔 체크인",
+              note: "렌트카 타고 출발 → 호텔로 이동",
+              address: "제주 제주시 애월해안로 394",
+              details: [
+                ["체크인", "21:30 전후"],
+                ["팁", "공항에서 출발시 호텔 주변에서 길을 돌아갈 수 있으니, 네비게이션 설정시 호텔 인근 도착으로 추천"],
+              ],
+            },
+            {
+              time: "22:00",
+              emoji: "🦐",
+              type: "식당",
+              accent: "yellow",
+              title: "닻",
+              note: "택시로 이동",
+              address: "제주 제주시 애월읍 가문동길 41-2 2층",
+              details: [
+                ["메뉴", "딱새우사시미, 성게관자구이, 고등어회"],
+                ["영업", "18:00~24:00"],
+              ],
+            },
+          ],
+        },
+        {
+          id: "d2",
+          label: "DAY 2",
+          dateText: "1/18 (일)",
+          titleEmoji: "🧑‍🤝‍🧑",
+          subtitle: "애월/협재 · 체험 · 드라이브 · 풀 · 흑돼지",
+          items: [
+            {
+              time: "09:00",
+              emoji: "🍲",
+              type: "식당",
+              accent: "orange",
+              title: "삼일해장국",
+              note: "07:00~13:20",
+              address: "제주 제주시 애월읍 하귀9길 14",
+              details: [
+                ["영업", "07:00~13:20"],
+              ],
+            },
+            {
+              time: "10:30",
+              emoji: "💍",
+              type: "체험",
+              accent: "green",
+              title: "반지공방 아뜰리에호수",
+              note: "10:30 예약",
+              address: "제주 제주시 협재1길 55-9",
+              details: [
+                ["예약", "10:30, 네이버예약"],
+              ],
+            },
+            {
+              time: "12:00",
+              emoji: "🍞",
+              type: "카페",
+              accent: "orange",
+              title: "브레드다이브",
+              note: "08:30~18:00 · 석진이의 빵투어",
+              address: "제주 제주시 한림읍 금능5길 21",
+              details: [
+                ["영업", "08:30~18:00"],
+                ["메뉴", "깜냥식빵, 할라피뇨 잠봉뵈르, 무화과 사워도우"],
+              ],
+            },
+            {
+              time: "13:00",
+              emoji: "🚗",
+              type: "바다",
+              accent: "green",
+              title: "해안도로 드라이브",
+              note: "반지 기다리면서 여유로운 시간 보내기",
+              address: "",
+              details: [
+                ["메모", "사이좋게 지내기"],
+              ],
+            },
+            {
+              time: "14:00",
+              emoji: "🍱",
+              type: "식당",
+              accent: "orange",
+              title: "우니담",
+              note: "15:00~16:00 브레이크타임",
+              address: "제주 제주시 애월읍 고내로13길 107 2층",
+              details: [
+                ["영업", "09:00~19:30, 브레이크타임 15:00~16:00 주의"],
+                ["메뉴", "성게덮밥(우니덮밥), 성게미역국과 전복가마솥밥"],
+              ],
+            },
+            {
+              time: "17:30",
+              emoji: "🏊",
+              type: "숙소",
+              accent: "green",
+              title: "인피니티풀",
+              note: "숨 참고 Love Dive",
+              address: "다인오세아노 호텔",
+              details: [
+                ["운영", "10:00~12:00 / 15:00~17:00 / 17:30~19:30 / 20:00~21:30 (성인전용)"],
+                ["메모", "방수팩, 카바나"],
+              ],
+            },
+            {
+              time: "20:00",
+              emoji: "🐷",
+              type: "식당",
+              accent: "orange",
+              title: "고이정",
+              note: "애월흑돼지 보리짚불구이",
+              address: "제주 제주시 애월읍 애월로 6 고이정",
+              details: [
+                ["영업", "11:00~24:00, 23:00 라스트오더"],
+                ["예약", "캐치테이블로 예약하기"],
+                ["메뉴", "흑돼지목살, 흑돼지삼겹살, 가브리살, 근고기"],
+              ],
+            },
+            {
+              time: "22:00",
+              emoji: "🍢",
+              type: "식당",
+              accent: "green",
+              title: "이치니치",
+              note: "함께 술마시는 공간",
+              address: "제주 제주시 애월읍 애월로11길 7 1층 이치니치",
+              details: [
+                ["영업", "19:00~02:00, 01:00 라스트오더"],
+                ["메뉴", "2인: 기본오뎅 / 기본튀김 / 기본오뎅+혼술튀김 주문가능"],
+                ["메모", "근처에 선화동왕십리막창구이 있음🤫"],
+              ],
+            },
+          ],
+        },
+        {
+          id: "d3",
+          label: "DAY 3",
+          dateText: "1/19 (월)",
+          titleEmoji: "🌴",
+          subtitle: "체크아웃 · 애월 산책 · 쇼핑 · 공항",
+          items: [
+            {
+              time: "10:30",
+              emoji: "🏨",
+              type: "숙소",
+              accent: "green",
+              title: "체크아웃",
+              note: "짐 정리하고 여유 있게 출발",
+              details: [
+                ["메모", "권소연 깨우기"],
+              ],
+            },
+            {
+              time: "11:00",
+              emoji: "🍲",
+              type: "식당",
+              accent: "orange",
+              title: "임순이네밥집",
+              note: "뜨듯하게 해장",
+              address: "제주 제주시 애월읍 곽지9길 8-1",
+              details: [
+                ["영업", "11:00~18:00"],
+                ["메뉴", "몸국, 고사리육개장"],
+              ],
+            },
+            {
+              time: "12:00",
+              emoji: "🚶",
+              type: "바다",
+              accent: "green",
+              title: "한담해안산책로",
+              note: "바람과 바다와 우리",
+              address: "제주 제주시 애월읍 곽지리 1359",
+              details: [
+                ["메모", "돌고래 보고싶다 🐬🐬🐬"],
+              ],
+            },
+            {
+              time: "12:30",
+              emoji: "🍊",
+              type: "카페",
+              accent: "orange",
+              title: "귤귤스토어 애월점",
+              note: "미피가 기다리는 소품샵",
+              address: "제주 제주시 애월읍 애월로1길 24-13",
+              details: [
+                ["영업", "10:30~19:30"],
+                ["포인트", "미피 굿즈"],
+              ],
+            },
+            {
+              time: "13:00",
+              emoji: "☕",
+              type: "카페",
+              accent: "green",
+              title: "인디고인디드",
+              note: "바다 보며 마시는 맛있는 커피",
+              address: "제주 제주시 애월읍 애월해안로 204",
+              details: [
+                ["영업", "11:00~19:00, 일요일 휴무"],
+                ["메뉴", "딥비엔나, 바닐라 썸머라떼, 모카플로트, 말차 블랑, 모카 커스터드"],
+              ],
+            },
+            {
+              time: "14:00",
+              emoji: "🚗",
+              type: "교통",
+              accent: "green",
+              title: "렌트카 반납",
+              note: "공항 근처로 여유 있게 이동",
+              address: "제주시 공항로1길 38",
+              details: [
+                ["반납", "14:00 전후"],
+              ],
+            },
+            {
+              time: "14:30",
+              emoji: "🦪",
+              type: "식당",
+              accent: "orange",
+              title: "도두해녀의집",
+              note: "돌아가기 전 마지막 만찬",
+              address: "제주 제주시 연신로 51",
+              details: [
+                ["영업", "10:00~20:00, 15:30~17:00 브레이크타임 "],
+                ["메뉴", "전복죽, 물회"],
+              ],
+            },
+            {
+              time: "17:10",
+              time2: "18:25",
+              emoji: "✈️",
+              type: "교통",
+              accent: "orange",
+              title: "제주 → 김포",
+              note: "티웨이항공 TW724 · 비행 1시간 15분",
+              details: [
+                ["항공", "티웨이항공 <code>TW724</code>"],
+                ["출발/도착", "17:10 → 18:25 (예상)"],
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    // ===== Helpers =====
+    const $ = (sel, el=document) => el.querySelector(sel);
+    const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+    const toast = (msg="완료") => {
+      const t = $("#toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(window.__t);
+      window.__t = setTimeout(()=>t.classList.remove("show"), 1300);
+    };
+
+    // ✅ 네이버 지도 검색 URL (구글 지도 제거)
+    const encodeNaverMap = (q) => "https://map.naver.com/v5/search/" + encodeURIComponent(q);
+
+    // LocalStorage for "done"
+    const STORE_KEY = "jeju_trip_done_v1";
+    const loadDone = () => { try{ return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); } catch(e){ return {}; } };
+    const saveDone = (obj) => localStorage.setItem(STORE_KEY, JSON.stringify(obj));
+
+    // ===== UI State =====
+    let activeDay = trip.days[0].id;
+    let done = loadDone();
+    let expandAll = false;
+
+    // ===== Build chips =====
+    const chips = $("#chips");
+    trip.highlights.forEach(h=>{
+      const el = document.createElement("span");
+      el.className = "chip";
+      el.innerHTML = `${h.emoji} ${h.text}`;
+      chips.appendChild(el);
+    });
+
+    // ===== Tabs =====
+    const tabs = $("#tabs");
+    trip.days.forEach((d, idx)=>{
+      const el = document.createElement("button");
+      el.className = "tab" + (idx===0 ? " active":"");
+      el.type = "button";
+      el.dataset.day = d.id;
+      el.innerHTML = `${d.titleEmoji} <b>${d.label}</b> `;
+      el.addEventListener("click", ()=>{
+        activeDay = d.id;
+        setHash(activeDay);
+        render();
+      });
+      tabs.appendChild(el);
+    });
+
+    function setHash(dayId){
+      try{ history.replaceState(null, "", "#"+dayId); }catch(e){}
+    }
+    function readHash(){
+      const h = (location.hash||"").replace("#","").trim();
+      if(trip.days.some(d=>d.id===h)) activeDay = h;
+    }
+
+    /* ✅ [색상 규칙] type 기반 tone/tagClass 계산 (방금 얘기한 색상만 반영) */
+    function typeToTone(typeStr){
+      const t = (typeStr || "").trim();
+      if(t.includes("교통") || t.includes("이동")) return "blue";          // [교통] 블루
+      if(t.includes("숙소") || t.includes("호텔")) return "green";         // [숙소] 그린
+      if(t.includes("카페") || t.includes("베이커리")) return "orange";    // [카페] 오렌지
+      if(t.includes("식당") || t.includes("식사")) return "yellow";        // [식당/식사] 옐로
+      return "orange"; // fallback
+    }
+    function toneToTagClass(tone){
+      return tone ? `tag ${tone}` : "tag";
+    }
+
+    // ===== Render =====
+    function render(){
+      $$(".tab").forEach(t=>t.classList.toggle("active", t.dataset.day===activeDay));
+
+      const day = trip.days.find(d=>d.id===activeDay);
+
+      const qRaw = ($("#q").value || "").trim();
+      const q = qRaw.toLowerCase();
+
+      // ✅ 검색어가 있으면 "전체 일정 검색" 모드
+      const isSearching = !!qRaw;
+
+      // 헤더 텍스트: 검색 중이면 전체 검색(결과 없으면 공백 처리)
+      $("#dayTitle").textContent = isSearching
+        ? `🔎 전체 일정 검색 · “${qRaw}”`
+        : `${day.titleEmoji} ${day.label} · ${day.dateText} `;
+
+      const tl = $("#timeline");
+      tl.innerHTML = "";
+
+      // ✅ 검색어가 있으면 3일 전체 풀에서 검색, 없으면 선택된 day만
+      const pool = isSearching
+        ? trip.days.flatMap(d => d.items.map((it, idx) => ({ day: d, it, idx })))
+        : day.items.map((it, idx) => ({ day, it, idx }));
+
+      const filtered = pool.filter(({ it })=>{
+        if(!isSearching) return true;
+        const hay = [
+          it.time, it.time2, it.title, it.note, it.type, it.address,
+          ...(it.details||[]).flat()
+        ].join(" ").toLowerCase();
+        return hay.includes(q);
+      });
+
+      // ✅ 검색 결과가 0개면 "아무것도 안 나오게" (타임라인 비움)
+      if(isSearching && filtered.length === 0){
+        // 헤더도 비우고 싶으면 아래 한 줄 유지 (원치 않으면 지워도 됨)
+        $("#dayTitle").textContent = "";
+        renderProgress();
+        return;
+      }
+
+      /* ✅ day의 "대표 tone"으로 타임라인 라인 색 결정 (첫 일정 기준) */
+      const dayTone = typeToTone((day.items[0] && day.items[0].type) ? day.items[0].type : "");
+      tl.dataset.tone = dayTone;
+
+      filtered.forEach(({ day: d, it, idx })=>{
+        const key = `${d.id}__${idx}__${it.title}`;
+        const isDone = !!done[key];
+
+        const row = document.createElement("div");
+        row.className = "item";
+
+        const tone = typeToTone(it.type);
+        row.dataset.tone = tone;
+
+        const time = document.createElement("div");
+        time.className = "time";
+        time.innerHTML = `
+          <div>${it.time || ""}</div>
+          <div class="time2">${it.time2 ? "→ "+it.time2 : ""}</div>
+        `;
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const tagClass = toneToTagClass(tone);
+
+        const hasAddress = !!(it.address && it.address.trim());
+        const mapUrl = hasAddress ? encodeNaverMap(it.address.trim()) : ""; 
+        const mapBtnHtml = hasAddress
+           ? `<a class="mini" data-act="map" href="${mapUrl}" target="_blank" rel="noopener">📍 네이버지도</a>`
+           : "";
+
+        const dayBadge = isSearching ? `<span class="tag day">${d.label}</span>` : "";
+
+
+
+
+        card.innerHTML = `
+          <div class="cardTop">
+            <div class="main">
+              <div class="emoji">${it.emoji || "✨"}</div>
+              <div class="txt">
+                <div class="name">
+                  <span>${it.title}</span>
+                  ${dayBadge}
+                  <span class="${tagClass}">${it.type || "일정"}</span>
+                </div>
+                <div class="subline">${it.note || ""}</div>
+              </div>
+            </div>
+
+            <div class="rightBtns">
+               ${mapBtnHtml}
+               <button class="mini ${isDone ? "done":""}" data-act="done" title="완료 체크">
+                    ${isDone ? "✅ 완료":"☑️ 체크"}
+               </button>
+            </div>
+
+          </div>
+
+          <details ${expandAll ? "open":""}>
+            <summary>
+              <span>디테일 보기</span>
+              <span>↕︎</span>
+            </summary>
+            <div class="detailBody">
+              ${it.address ? `
+                <div class="kv">
+                  <div class="k">주소</div>
+                  <div class="v">${it.address}</div>
+                </div>` : ""
+              }
+              ${it.details && it.details.length ? it.details.map(([k,v])=>`
+                <div class="kv">
+                  <div class="k">${k}</div>
+                  <div class="v">${v}</div>
+                </div>
+              `).join("") : `
+                <div class="kv">
+                  <div class="k">메모</div>
+                  <div class="v">필요한 디테일만 딱. 나머지는 현지에서 감으로도 OK.</div>
+                </div>
+              `}
+            </div>
+          </details>
+        `;
+
+        card.querySelector('[data-act="done"]').addEventListener("click", (e)=>{
+          e.preventDefault();
+          e.stopPropagation();
+          done[key] = !done[key];
+          saveDone(done);
+          renderProgress();
+          render();
+        });
+
+        card.querySelector(".cardTop").addEventListener("click", ()=>{
+          const det = card.querySelector("details");
+          det.open = !det.open;
+        });
+
+        row.appendChild(time);
+        row.appendChild(card);
+        tl.appendChild(row);
+      });
+
+      renderProgress();
+    }
+
+    function renderProgress(){
+      const allKeys = [];
+      trip.days.forEach(d=>{
+        d.items.forEach((it, idx)=> allKeys.push(`${d.id}__${idx}__${it.title}`));
+      });
+      const total = allKeys.length;
+      const doneCount = allKeys.filter(k=>!!done[k]).length;
+      const pct = total ? Math.round((doneCount/total)*100) : 0;
+
+      $("#totalCount").textContent = total;
+      $("#doneCount").textContent = doneCount;
+      $("#pct").textContent = pct + "%";
+      $("#bar").style.width = pct + "%";
+
+      const foodCount = trip.days.flatMap(d=>d.items)
+        .filter(i=>(i.type||"").includes("식사") || (i.type||"").includes("카페") || (i.type||"")==="카페/베이커리")
+        .length;
+      // 원래 코드에 #statFood가 없어서 그대로 두면 에러 날 수 있음
+      // (네 코드 유지 목적상 아래 라인은 원문 유지했지만, 실제로는 id가 없으면 주석 처리 권장)
+      // $("#statFood").textContent = foodCount;
+    }
+
+    // ===== Actions =====
+    $("#copyLink").addEventListener("click", async ()=>{
+      try{
+        setHash(activeDay);
+        await navigator.clipboard.writeText(location.href);
+        toast("🔗 링크 복사 완료");
+      }catch(e){
+        toast("복사 실패… 브라우저 권한 확인!");
+      }
+    });
+
+    $("#resetDone").addEventListener("click", ()=>{
+      done = {};
+      saveDone(done);
+      toast("♻️ 체크 리셋");
+      renderProgress();
+      render();
+    });
+
+    $("#expandAll").addEventListener("click", ()=>{
+      expandAll = !expandAll;
+      toast(expandAll ? "🧾 디테일: 전체 펼침" : "🧾 디테일: 기본");
+      render();
+    });
+
+    $("#q").addEventListener("input", ()=>render());
+    window.addEventListener("keydown", (e)=>{
+      if(e.key === "/"){
+        e.preventDefault();
+        $("#q").focus();
+      }
+      if(e.key === "Escape"){
+        if(document.activeElement === $("#q") || $("#q").value){
+          $("#q").value = "";
+          $("#q").blur();
+          render();
+          toast("검색 초기화");
+        }
+      }
+    });
+
+    // ===== Init =====
+    readHash();
+    setHash(activeDay);
+    render();
+  </script>
+</body>
+</html>
