@@ -15,12 +15,9 @@
       --shadow: 0 12px 30px rgba(2,6,23,.08);
       --shadow2: 0 8px 20px rgba(2,6,23,.06);
 
-      /* ✅ 포인트 컬러 */
       --orange:#ff7a18;
       --orange2:#ff4d00;  /* 더 딥한 오렌지 */
       --green:#16a34a;
-
-      /* ✅ 오렌지 단색/오렌지 그라데이션(혼합 금지) */
       --orangeGrad: linear-gradient(135deg, rgba(255,122,24,.98), rgba(255,77,0,.96));
 
       --soft: #f8fafc;
@@ -82,7 +79,6 @@
     .btn.primary{
       border:none;
       color:#fff;
-      /* ✅ (오렌지+그린 혼합 제거) 오렌지 그라데이션만 */
       background: var(--orangeGrad);
     }
     .btn.ghost{background:transparent; box-shadow:none}
@@ -151,7 +147,6 @@
       height:100%;
       width:0%;
       border-radius:999px;
-      /* ✅ 진행바도 오렌지 그라데이션만 */
       background: linear-gradient(90deg, rgba(255,122,24,.98), rgba(255,77,0,.96));
       transition: width .35s ease;
     }
@@ -174,7 +169,6 @@
     .tab.active{
       border-color: transparent;
       color:#fff;
-      /* ✅ 탭 활성도 오렌지 그라데이션 */
       background: var(--orangeGrad);
     }
     .search{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
@@ -431,6 +425,96 @@
     .timeline[data-tone="orange"]::before{
       background: linear-gradient(to bottom, rgba(255,122,24,.40), rgba(255,77,0,.30));
     }
+
+    /* =========================================================
+   📱 Mobile polish (copy & paste)
+   ========================================================= */
+@media (max-width: 600px){
+
+  /* 전체 여백 정리 */
+  .wrap{
+    padding:16px 12px 60px;
+  }
+
+  /* 히어로 영역 */
+  .hero{
+    padding:16px 14px;
+  }
+  .title h2{
+    font-size:22px;
+    line-height:1.2;
+  }
+  .title p{
+    font-size:13px;
+    line-height:1.5;
+  }
+
+  /* 탭: 가로 스크롤 */
+  .tabs{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap:8px;
+    padding-bottom:6px;
+  }
+  .tabs::-webkit-scrollbar{
+    height:0;
+  }
+  .tab{
+    flex:0 0 auto;
+    white-space:nowrap;
+  }
+
+  /* 통계 카드 1열 */
+  .stats{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .stat .v{
+    font-size:16px;
+  }
+
+  /* 타임라인 */
+  .timeline{
+    padding:12px 10px 14px;
+  }
+  .item{
+    grid-template-columns:48px 1fr;
+    gap:10px;
+  }
+  .time{
+    font-size:11px;
+    padding-top:2px;
+    text-align:right;
+  }
+  .time .time2{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:2px;
+    line-height:1.2;
+  }
+
+  /* 카드 */
+  .cardTop{
+    padding:11px 10px;
+  }
+
+  /* 버튼 */
+  .rightBtns{
+    gap:6px;
+  }
+  .mini{
+    padding:8px 9px;
+    font-size:12px;
+    white-space:nowrap;
+  }
+
+  /* 힌트 문구 숨김 */
+  .hint{
+    display:none;
+  }
+}
+
   </style>
 </head>
 
@@ -1115,3 +1199,4 @@
   </script>
 </body>
 </html>
+
