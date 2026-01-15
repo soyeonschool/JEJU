@@ -515,6 +515,74 @@
   }
 }
 
+    /* =========================================================
+   ✅ Mobile fixes (buttons wrap + note align + detail spacing)
+   ========================================================= */
+@media (max-width: 600px){
+
+  /* 1) [네이버지도] / [체크] 버튼: 모바일에선 줄바꿈(세로 스택) */
+  .cardTop{
+    flex-direction: column;     /* 텍스트/버튼을 위아래로 분리 */
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .main{
+    width: 100%;
+  }
+
+  .rightBtns{
+    width: 100%;
+    display: flex;
+    flex-direction: column;     /* ✅ 버튼 줄바꿈 = 세로로 쌓기 */
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .mini{
+    width: 100%;
+    justify-content: center;    /* 버튼 텍스트 가운데 정렬 */
+    white-space: normal;        /* ✅ 줄바꿈 허용 */
+  }
+
+  /* 2) 일정 note 정렬: 오른쪽 버튼 때문에 좁아지지 않게(위에서 cardTop 분리로 해결)
+        + 모바일에선 2줄 클램프 해제(원하면 유지 가능) */
+  .txt .subline{
+    -webkit-line-clamp: unset;  /* ✅ note 잘림/정렬 깨짐 방지 */
+    display: block;
+    overflow: visible;
+    text-overflow: unset;
+    margin-top: 8px;
+  }
+
+  /* 3) 디테일(주소/메모/영업시간) 가운데 여백 과다: kv 그리드 폭/패딩 축소 */
+  .detailBody{
+    gap: 8px;
+  }
+
+  .kv{
+    grid-template-columns: 78px 1fr; /* ✅ 왼쪽 라벨 폭 줄임 */
+    gap: 8px;
+    padding: 10px 10px;             /* ✅ 내부 여백 줄임 */
+  }
+
+  .kv .k{
+    font-size: 11px;                /* 라벨 조금 작게 */
+    white-space: nowrap;            /* 라벨 줄바꿈 방지 */
+  }
+
+  .kv .v{
+    word-break: break-word;         /* 긴 글(예약번호/메모) 깨짐 방지 */
+  }
+
+  /* 디테일 안 code칩이 너무 커 보이면 */
+  .kv code{
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+}
+
+
   </style>
 </head>
 
@@ -1199,4 +1267,5 @@
   </script>
 </body>
 </html>
+
 
