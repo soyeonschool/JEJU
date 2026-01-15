@@ -417,19 +417,39 @@
         margin-top:2px;
       }
 
-      /* ✅ 버튼: 아이콘 버튼 + 자동 줄바꿈 */
-      .rightBtns{
-        flex-wrap:wrap;
-        gap:8px;
-        justify-content:flex-end;
+        /* ✅ 헤더를 "제목줄" + "버튼줄" 로 쪼개기 */
+        .headRow{
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+        }
+
+  /* ✅ 제목은 무조건 1줄(ellipsis) */
+        .txt .name{
+          flex-wrap: nowrap;
+        }
+        .txt .name > span:first-child{
+            display:block;
+            min-width:0;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
+
+  /* ✅ 버튼은 둘째줄: [지도][체크] 반반 / 체크만이면 1개 꽉 차고 가운데 */
+        .rightBtns{
+            width:100%;
+            display:flex;
+            gap:8px;
+        }
+        .rightBtns .mini{
+            flex:1 1 0;
+            justify-content:center;
+        }
+        .rightBtns.one .mini{
+            flex-basis:100%;
+        }
       }
-      .mini{
-        flex:1 1 48%;
-        justify-content:center;
-        padding:8px 10px;
-        border-radius:12px;
-      }
-      .mini .lbl{font-size:11px}
 
       /* ✅ 디테일 가운데 공백 줄이기 */
       details{padding:8px 10px 10px}
@@ -954,7 +974,7 @@
                 </div>
               </div>
 
-              <div class="rightBtns">
+              <div class="rightBtns ${hasAddress ? "two" : "one"}">
                 ${mapBtnHTML}
                 <button class="mini ${isDone ? "done":""}" data-act="done" type="button" title="완료 체크">
                   <span class="ico">${doneIcon}</span><span class="lbl">${doneLabel}</span>
@@ -1090,3 +1110,4 @@
   </script>
 </body>
 </html>
+
